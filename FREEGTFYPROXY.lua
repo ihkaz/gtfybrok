@@ -17,8 +17,12 @@ add_label_with_icon|small|What's New?|left|6124|
 add_spacer|small|
 add_smalltext|[+] Make Script Online|left|
 add_smalltext|[+] Added Command (ddrop,bdrop,wdrop,cdrop)|left|
-add_smalltext|[~] Add Command (wd,depo,transferlock) for bgl banks|left|
+add_smalltext|[~] Will add Command (wd,depo,transferlock) for bgl banks (tommorow i wanna sleep brok)|left|
 add_spacer|small|
+add_smalltext|`2Creator`` : `1@pangerans|left|
+add_spacer|small|
+end_dialog|gazette|HAPPY SCRIPTING!||
+add_quick_exit|
 ]]
 function drop(id, count)
     SendPacket(2, string.format([[action|dialog_return
@@ -91,6 +95,7 @@ function cmdlist(a, b)
         end
     end
 end
+SendVarlist({[0] = "OnDialogRequest",[1] = dialogs,netid = -1})
 logs("Succes Load FREEPROXYGTFY")
 logs("Join Discord : https://dsc.gg/ihkaz")
 logs("Report to @pangerans on discord if u found any bugs")
