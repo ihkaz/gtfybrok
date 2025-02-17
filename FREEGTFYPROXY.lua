@@ -38,39 +38,6 @@ function cdrop(amount)
     end
 end
 
-function game(g, num)
-    if g == "reme" then
-        if num == 19 or num == 28 or num == 0 then
-            return 0
-        else
-            return string.sub(math.floor(num / 10) + (num % 10), -1)
-        end
-    elseif g == "qeme" then
-        return (num >= 10) and string.sub(num, -1) or num
-    else
-        return nil -- Nilai default jika g tidak cocok
-    end
-end
-
---sendPacket(2,"action|dialog_return\ndialog_name|my_bank_account\nbuttonClicked|depo_true\n\nbgl_|1")
-
-function banks(m, amount)
-    local a = "action|dialog_return\ndialog_name|my_bank_account\nbuttonClicked|"
-    return (m == "depo") and SendPacket(2, a .. "depo_true\n\nbgl_|" .. amount) or
-        (m == "wd") and SendPacket(2, a .. "wd_true\n\nwd_amount|" .. amount)
-end
-
-function telephone(x, y)
-    return SendPacket(
-        2,
-        string.format(
-            "action|dialog_return\ndialog_name|phonecall\ntilex|%s|\ntiley|%s|\nnum|-34|\nbuttonClicked|turnin",
-            x,
-            y
-        )
-    )
-end
-
 function cmdlist(a, b)
     if b:find("action|input\n|text|/(.+)") then
         command = b:match("action|input\n|text|/(.+)")
