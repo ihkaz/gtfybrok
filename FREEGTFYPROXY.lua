@@ -17,7 +17,7 @@ add_label_with_icon|small|What's New?|left|6124|
 add_spacer|small|
 add_smalltext|[+] Make Script Online|left|
 add_smalltext|[+] Added Command (ddrop,bdrop,wdrop,cdrop)|left|
-add_smalltext|[~] Will add Command (wd,depo,transferlock) for bgl banks (tommorow i wanna sleep brok)|left|
+add_smalltext|[~] Will add Command (wd,depo,transferlock) for bgl banks (tommorow)|left|
 add_spacer|small|
 add_smalltext|`2Creator`` : `1@pangerans|left|
 add_spacer|small|
