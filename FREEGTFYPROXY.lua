@@ -6,6 +6,14 @@ function getinv(id)
     end
     return 0
 end
+local dialogs = [[
+set_bg_color|0,0,0,200
+set_border_color|0,0,0,250
+set_default_color|`0
+add_label_with_icon|big|iHkaz Community Helper|left|7188|
+add_spacer|small|
+add_label_with_icon|small|What's New?|left|6129
+]]
 function drop(id, count)
     SendPacket(2, string.format([[action|dialog_return
 dialog_name|drop_item
