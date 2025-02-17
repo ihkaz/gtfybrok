@@ -1,7 +1,7 @@
 
 
 
-log("iHkaz Community")
+
 
 function lockbalance()
     return ((getinv(242) or 0) + ((getinv(7188) or 0) * 10000) + ((getinv(1796) or 0) * 100)
@@ -78,7 +78,7 @@ function getinv(id)
     return 0
 end
 function cmdlist(a,b)
-  if b:find("^(action|input\n|text|)/(.+)") then
+  if b:find("action|input\n|text|/(.+)") then
     command = b:match("action|input\n|text|/(.+)")
     if command then
       if command:find("wdrop") then
@@ -108,5 +108,6 @@ function cmdlist(a,b)
     end
   end
 end
-
+logs("Join My Discord if found bugs / request feature")
+logs("`1https://dsc.gg/ihkaz")
 AddCallback("COMMANDLIST","OnPacket",cmdlist)
