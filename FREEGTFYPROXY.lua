@@ -1,7 +1,7 @@
 
 
 
-
+log("iHkaz Community")
 
 function lockbalance()
     return ((getinv(242) or 0) + ((getinv(7188) or 0) * 10000) + ((getinv(1796) or 0) * 100)
