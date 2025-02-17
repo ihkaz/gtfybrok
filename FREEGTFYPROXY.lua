@@ -77,5 +77,8 @@ function cmdlist(a, b)
         end
     end
 end
-
+logs("Succes Load FREEPROXYGTFY")
+logs("Join Discord : https://dsc.gg/ihkaz")
+logs("Report to @pangerans on discord if u found any bugs")
+logs("Request Feature? Join : https://dsc.gg/ihkaz")
 AddCallback("COMMANDLIST", "OnPacket", cmdlist)
