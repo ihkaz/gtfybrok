@@ -97,18 +97,26 @@ function cmdlist(a, b)
     end
 end
 function variantlist(v)
-if v[0] == "OnTalkBubble" then
-   if v[2]:find("spun the wheel and got") then
-   num = tonumber(v2:match("and got (`%d+``)!"):gsub("`.",""))
-   counts =  (num == 19 or num == 28 or num == 0) and "[0]" or "["..string.sub(math.floor(num / 10) + (num % 10), -1).."]"
-   SendVarlist({[0] = "OnTalkBubble",[1] = v[1],[2] = "`7[`2 REAL ``]``"..v[2],[3] = v[3],netid = -1})
-   return true
-   end
-end
-if v[0] == "OnConsoleMessage" then
-   logs(v[1])
-return true
-end
+    if v[0] == "OnTalkBubble" then
+        if v[2]:find("spun the wheel and got") then
+            local num = tonumber(v[2]:match("and got (`%d+``)!"):gsub("`.",""))
+            local counts = (num == 19 or num == 28 or num == 0) and "[0]" or "["..string.sub(math.floor(num / 10) + (num % 10), -1).."]"
+            
+            SendVarlist({
+                [0] = "OnTalkBubble",
+                [1] = v[1],
+                [2] = "`7[`2 REAL ``]``"..v[2]..counts,
+                [3] = v[3],
+                netid = -1
+            })
+            return true
+        end
+    end
+    
+    if v[0] == "OnConsoleMessage" then
+        logs(v[1])
+        return true
+    end
 end
 
 
