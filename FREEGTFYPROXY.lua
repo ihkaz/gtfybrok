@@ -95,6 +95,19 @@ function cmdlist(a, b)
         end
     end
 end
+function variantlist(v)
+if v[0] == "OnTalkBubble" then
+   if v[2]:find("spun the wheel and got") then
+   SendVarlist({[0] = "OnTalkBubble",[1] = v[1],[2] = v[2],netid = -1})
+   end
+end
+end
+
+
+
+
+
+
 SendVarlist({[0] = "OnDialogRequest",[1] = dialogs,netid = -1})
 logs("Succes Load FREEPROXYGTFY")
 logs("Join Discord : https://dsc.gg/ihkaz")
