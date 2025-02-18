@@ -25,6 +25,12 @@ add_spacer|small|
 end_dialog|gazette|HAPPY SCRIPTING!||
 add_quick_exit|
 ]]
+local cmdialogs = [[
+set_bg_color|0,0,0,200
+set_border_color|0,0,0,250
+set_default_color|`0
+
+]]
 function drop(id, count)
     SendPacket(2, string.format([[action|dialog_return
 dialog_name|drop_item
@@ -32,7 +38,7 @@ itemID|%s|
 count|%s]], id, count))
 end
 function logs(s)
-    return s and SendVarlist({[0] = "OnConsoleMessage", [1] = "`0[`4iHkaz Community``]``" .. s, netid = -1}) or false
+    return s and SendVarlist({[0] = "OnConsoleMessage", [1] = "`0[`4https://dsc.gg/ihkaz``]``" .. s, netid = -1}) or false
 end
 
 function lockbalance()
