@@ -48,7 +48,7 @@ itemID|%s|
 count|%s]], id, count))
 end
 function logs(s)
-    return s and SendVarlist({[0] = "OnConsoleMessage", [1] = "`0[`4https://dsc.gg/ihkaz``]``" .. s, netid = -1}) or false
+    return s and SendVarlist({[0] = "OnConsoleMessage", [1] = "`0[/ihkazhelp]``" .. s, netid = -1}) or false
 end
 
 function lockbalance()
