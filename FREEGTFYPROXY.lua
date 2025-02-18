@@ -98,7 +98,7 @@ end
 function variantlist(v)
 if v[0] == "OnTalkBubble" then
    if v[2]:find("spun the wheel and got") then
-   SendVarlist({[0] = "OnTalkBubble",[1] = v[1],[2] = v[2],[3] = v[3],netid = -1})
+   SendVarlist({[0] = "OnTalkBubble",[1] = v[1],[2] = "`7[`2 REAL ``]``"..v[2],[3] = v[3],netid = -1})
    end
 end
 end
@@ -114,3 +114,4 @@ logs("Join Discord : https://dsc.gg/ihkaz")
 logs("Report to @pangerans on discord if u found any bugs")
 logs("Request Feature? Join : https://dsc.gg/ihkaz")
 AddCallback("COMMANDLIST", "OnPacket", cmdlist)
+AddCallback("VARIANTLIST", "OnVarlist", variantlist)
