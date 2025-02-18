@@ -92,7 +92,7 @@ function cmdlist(a, b)
                 end
                 cdrop(amounts)
                 return true
-            end
+            end  
         end
     end
 end
