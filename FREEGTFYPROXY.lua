@@ -29,7 +29,17 @@ local cmdialogs = [[
 set_bg_color|0,0,0,200
 set_border_color|0,0,0,250
 set_default_color|`0
-
+add_label_with_icon|big|List Commands : |left|32|
+add_smalltext|`4https://dsc.gg/ihkaz|left|
+add_spacer|small|
+add_label_with_icon|small|[/wdrop {count}] Dropping WLS|left|242|
+add_label_with_icon|small|[/ddrop {count}] Dropping DLS|left|1796|
+add_label_with_icon|small|[/bdrop {count}] Dropping BGLS|left|7188|
+add_spacer|small|
+add_smalltext|`2Creator`` : `1@pangerans|left|
+add_spacer|small|
+end_dialog|gazette|HAPPY SCRIPTING!||
+add_quick_exit|
 ]]
 function drop(id, count)
     SendPacket(2, string.format([[action|dialog_return
@@ -98,7 +108,11 @@ function cmdlist(a, b)
                 end
                 cdrop(amounts)
                 return true
-            end  
+            end
+            if command == "ihkazhelp" then
+               SendVarlist({[0] = "OnDialogRequest",[1] = cmdialogs,netid = -1})
+               return true
+            end
         end
     end
 end
