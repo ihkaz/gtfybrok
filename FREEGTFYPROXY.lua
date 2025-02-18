@@ -100,7 +100,7 @@ end
 function variantlist(v)
     if v[0] == "OnTalkBubble" then
         if v[2]:find("spun the wheel and got") then
-            local num = tonumber(string.match(v[2], "`4(%d+)"))
+            local num = tonumber(string.match(v[2]:gsub("`.",""), "(%d+)%!"))
             local counts = (num == 19 or num == 28 or num == 0) and "[0]" or "["..string.sub(math.floor(num / 10) + (num % 10), -1).."]"
             
             SendVarlist({
