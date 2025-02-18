@@ -99,6 +99,7 @@ function variantlist(v)
 if v[0] == "OnTalkBubble" then
    if v[2]:find("spun the wheel and got") then
    SendVarlist({[0] = "OnTalkBubble",[1] = v[1],[2] = "`7[`2 REAL ``]``"..v[2],[3] = v[3],netid = -1})
+   return true
    end
 end
 end
