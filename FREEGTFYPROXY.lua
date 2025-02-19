@@ -73,6 +73,17 @@ function cdrop(amount)
     end
 end
 
+function banks(m, amount)
+    local a = "action|dialog_return\ndialog_name|my_bank_account\nbuttonClicked|"
+    
+    if m == "depo" then
+        return SendPacket(2, a .. "depo_true\n\nbgl_|" .. amount)
+    elseif m == "wd" then
+        return SendPacket(2, a .. "wd_true\n\nwd_amount|" .. amount)
+    end
+   return nil
+end
+
 function cmdlist(a, b)
     if b:find("action|input\n|text|/(.+)") then
         command = b:match("action|input\n|text|/(.+)")
@@ -111,6 +122,24 @@ function cmdlist(a, b)
             end
             if command == "ihkazhelp" then
                SendVarlist({[0] = "OnDialogRequest",[1] = cmdialogs,netid = -1})
+               return true
+            end
+            if command:find("wd") then
+               amounts = tonumber(b:match("wd (%d+)"))
+               if not amounts then
+                  return logs("Example : /wd {amount}")
+               end
+               banks("wd",amounts)
+               logs("Withdraw "..amounts.." Bgl in the banks")
+               return true
+            end
+            if command:find("depo") then
+               amounts = tonumber(b:match("depo (%d+)"))
+               if not amounts then
+                  return logs("Example : /depo {amount}")
+               end
+               banks("depo",amounts)
+               logs("Deposit "..amounts.." Bgl in the banks")
                return true
             end
         end
