@@ -32,7 +32,7 @@ add_spacer|small|
 add_label_with_icon|small|[/wl {count}] Dropping WLS|left|242|
 add_label_with_icon|small|[/dl {count}] Dropping DLS|left|1796|
 add_label_with_icon|small|[/bgl {count}] Dropping BGLS|left|7188|
-add_label_with_icon|small|[/abso {count}] Dropping Absolute Locks|left|16700|
+add_label_with_icon|small|[/abso {count}] Dropping Absolute Locks|left|167700|
 add_label_with_icon|small|[/wd {count}] Witdraw BGL on the banks|left|6290|
 add_label_with_icon|small|[/depo {count}] Deposit BGL to the banks|left|6290|
 add_spacer|small|
