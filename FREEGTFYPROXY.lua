@@ -48,7 +48,7 @@ itemID|%s|
 count|%s]], id, count))
 end
 function logs(s)
-    return s and SendVarlist({[0] = "OnConsoleMessage", [1] = s .."`0 [type /ihkazhelp for command]``", netid = -1}) or false
+    return s and SendVarlist({[0] = "OnConsoleMessage", [1] = s, netid = -1}) or false
 end
 
 function lockbalance()
@@ -170,11 +170,9 @@ function variantlist(v)
             return true
         end
     end
-    
-    if v[0] == "OnConsoleMessage" then
-        logs(v[1])
-        return true
-    end
+   if var[0] == "OnConsoleMessage" then
+      logs(var[1])
+   end
 end
 
 
