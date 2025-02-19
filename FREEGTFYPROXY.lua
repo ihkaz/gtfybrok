@@ -13,12 +13,9 @@ set_default_color|`0
 add_label_with_icon|big|iHkaz Community Helper|left|7188|
 add_smalltext|https://dsc.gg/ihkaz|left|
 add_spacer|small|
-add_label_with_icon|small|What's New?|left|6124|
+add_label_with_icon|small|What's New? PATCH : [`419/02/2025``]|left|6124|
 add_spacer|small|
-add_smalltext|[+] Make Script Online|left|
-add_smalltext|[+] Add Reme Count on spun bubble|left|
-add_smalltext|[+] Added Command (ddrop,bdrop,wdrop,cdrop)|left|
-add_smalltext|[~] Will add Command (wd,depo,transferlock) for bgl banks (tommorow)|left|
+add_smalltext|[+] Commands : [/abso,/wd,/depo]
 add_spacer|small|
 add_smalltext|`2Creator`` : `1@pangerans|left|
 add_spacer|small|
@@ -32,9 +29,12 @@ set_default_color|`0
 add_label_with_icon|big|List Commands : |left|32|
 add_smalltext|`4https://dsc.gg/ihkaz|left|
 add_spacer|small|
-add_label_with_icon|small|[/wdrop {count}] Dropping WLS|left|242|
-add_label_with_icon|small|[/ddrop {count}] Dropping DLS|left|1796|
-add_label_with_icon|small|[/bdrop {count}] Dropping BGLS|left|7188|
+add_label_with_icon|small|[/wl {count}] Dropping WLS|left|242|
+add_label_with_icon|small|[/dl {count}] Dropping DLS|left|1796|
+add_label_with_icon|small|[/bgl {count}] Dropping BGLS|left|7188|
+add_label_with_icon|small|[/abso {count}] Dropping Absolute Locks|left|16700|
+add_label_with_icon|small|[/wd {count}] Witdraw BGL on the banks|left|6290|
+add_label_with_icon|small|[/depo {count}] Deposit BGL to the banks|left|6290|
 add_spacer|small|
 add_smalltext|`2Creator`` : `1@pangerans|left|
 add_spacer|small|
@@ -88,28 +88,36 @@ function cmdlist(a, b)
     if b:find("action|input\n|text|/(.+)") then
         command = b:match("action|input\n|text|/(.+)")
         if command then
-            if command:find("wdrop") then
-                amounts = tonumber(b:match("wdrop (%d+)"))
+            if command:find("wl") then
+                amounts = tonumber(b:match("wl (%d+)"))
                 if not amounts then
-                    return logs("Example : /wdrop {amount}")
+                    return logs("Example : /wl {amount}")
                 end
                 drop(242, tonumber(amounts))
                 return true
             end
-            if command:find("ddrop") then
-                amounts = tonumber(b:match("ddrop (%d+)"))
+            if command:find("dl") then
+                amounts = tonumber(b:match("dl (%d+)"))
                 if not amounts then
-                    return logs("Example : /ddrop {amount}")
+                    return logs("Example : /dl {amount}")
                 end
                 drop(1796, amounts)
                 return true
             end
-            if command:find("bdrop") then
-                amounts = tonumber(b:match("bdrop (%d+)"))
+            if command:find("bgl") then
+                amounts = tonumber(b:match("bgl (%d+)"))
                 if not amounts then
-                    return logs("Example : /bdrop {amount}")
+                    return logs("Example : /bgl {amount}")
                 end
                 drop(7188, amounts)
+                return true
+            end
+            if command:find("abso") then
+                amounts = tonumber(b:match("abso (%d+)"))
+                if not amounts then
+                    return logs("Example : /abso {amount}")
+                end
+                drop(16770, amounts)
                 return true
             end
             if command:find("cdrop") then
