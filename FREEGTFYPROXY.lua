@@ -53,7 +53,7 @@ function logs(s)
 end
 
 function telephone(x, y)
-    return SendPacket(2, string.format("action|dialog_return\ndialog_name|phonecall\ntilex|%s|\ntiley|%s|\nnum|-34|\nbuttonClicked|turnin", x, y))
+    return SendPacket(2, string.format("action|dialog_return\ndialog_name|phonecall\ntilex|%s|\ntiley|%s|\nnum|-34|\nbuttonClicked|turnin\n", x, y))
 end
 
 function lockbalance()
@@ -175,16 +175,16 @@ function variantlist(v)
         end
     end
    if var[0] == "OnConsoleMessage" then
-      logs(var[1])
+      logs(v[1])
       return true
    end
-   if var[0] == "OnDialogRequest" then
-      if var[1]:find("add_textbox|Excellent%! I'm happy to sell you a Blue Gem Lock in exchange for 100 Diamond Lock") then
+   if v[0] == "OnDialogRequest" then
+      if v[1]:find("add_textbox|Excellent%! I'm happy to sell you a Blue Gem Lock in exchange for 100 Diamond Lock") then
          return true
       end
-      if var[1]:find("`wTelephone``") and getinv(1796) >= 100 then
-         local tilex = var[1]:match("tilex|(%d+)\n")
-         local tiley = var[1]:match("tiley|(%d+)\n")
+      if v[1]:find("`wTelephone``") and getinv(1796) >= 100 then
+         local tilex = v[1]:match("tilex|(%d+)\n")
+         local tiley = v[1]:match("tiley|(%d+)\n")
          telephone(tilex,tiley)
          return true
       end
