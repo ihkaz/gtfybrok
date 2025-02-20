@@ -6,6 +6,7 @@ function getinv(id)
     end
     return 0
 end
+local logspin = {}
 local dialogs = [[
 set_bg_color|0,0,0,200
 set_border_color|0,0,0,250
