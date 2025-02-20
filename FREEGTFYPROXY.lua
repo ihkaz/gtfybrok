@@ -88,7 +88,7 @@ function cmdlist(a, b)
     if b:find("action|input\n|text|/(.+)") then
         command = b:match("action|input\n|text|/(.+)")
         if command then
-            if command:find("wl") then
+            if command:match("^wl%s") then
                 amounts = tonumber(b:match("wl (%d+)"))
                 if not amounts then
                     return logs("Example : /wl {amount}")
@@ -96,7 +96,7 @@ function cmdlist(a, b)
                 drop(242, tonumber(amounts))
                 return true
             end
-            if command:find("dl") then
+            if command:match("^dl%s") then
                 amounts = tonumber(b:match("dl (%d+)"))
                 if not amounts then
                     return logs("Example : /dl {amount}")
@@ -104,7 +104,7 @@ function cmdlist(a, b)
                 drop(1796, amounts)
                 return true
             end
-            if command:find("bgl") then
+            if command:match("^bgl%s") then
                 amounts = tonumber(b:match("bgl (%d+)"))
                 if not amounts then
                     return logs("Example : /bgl {amount}")
@@ -112,7 +112,7 @@ function cmdlist(a, b)
                 drop(7188, amounts)
                 return true
             end
-            if command:find("abso") then
+            if command:match("^abso%s") then
                 amounts = tonumber(b:match("abso (%d+)"))
                 if not amounts then
                     return logs("Example : /abso {amount}")
@@ -120,7 +120,7 @@ function cmdlist(a, b)
                 drop(16770, amounts)
                 return true
             end
-            if command:find("cdrop") then
+            if command:match("^cdrop%s") then
                 amounts = tonumber(b:match("cdrop (%d+)"))
                 if not amounts then
                     return logs("Example : /cdrop {amount}")
@@ -132,7 +132,7 @@ function cmdlist(a, b)
                SendVarlist({[0] = "OnDialogRequest",[1] = cmdialogs,netid = -1})
                return true
             end
-            if command:find("wd") then
+            if command:match("^wd%s") then
                amounts = tonumber(b:match("wd (%d+)"))
                if not amounts then
                   return logs("Example : /wd {amount}")
@@ -141,7 +141,7 @@ function cmdlist(a, b)
                logs("Withdraw "..amounts.." Bgl in the banks")
                return true
             end
-            if command:find("depo") then
+            if command:match("^depo%s") then
                amounts = tonumber(b:match("depo (%d+)"))
                if not amounts then
                   return logs("Example : /depo {amount}")
@@ -159,7 +159,6 @@ function variantlist(v)
         if v[2]:find("spun the wheel and got") then
             local num = tonumber(string.match(v[2]:gsub("`.",""), "(%d+)%!"))
             local counts = (num == 19 or num == 28 or num == 0) and "[0]" or "["..string.sub(math.floor(num / 10) + (num % 10), -1).."]"
-            
             SendVarlist({
                 [0] = "OnTalkBubble",
                 [1] = v[1],
