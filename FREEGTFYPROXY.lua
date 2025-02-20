@@ -52,6 +52,10 @@ function logs(s)
     return s and SendVarlist({[0] = "OnConsoleMessage", [1] = s, netid = -1}) or false
 end
 
+function telephone(x, y)
+    return SendPacket(2, string.format("action|dialog_return\ndialog_name|phonecall\ntilex|%s|\ntiley|%s|\nnum|-34|\nbuttonClicked|turnin", x, y))
+end
+
 function lockbalance()
     return (getinv(242) or 0) + ((getinv(7188) or 0) * 10000) + ((getinv(1796) or 0) * 100)
 end
@@ -172,10 +176,22 @@ function variantlist(v)
     end
    if var[0] == "OnConsoleMessage" then
       logs(var[1])
+      return true
    end
+   if var[0] == "OnDialogRequest" then
+if var[1]:find("add_textbox|Excellent%! I'm happy to sell you a Blue Gem Lock in exchange for 100 Diamond Lock") then
+return true
+end
+end
 end
 
-
+function raw(a)
+   if a.type == 3 and (a.int_data == 32 or a.int_data == 18) and CheckTile(a.int_x,a.int_y).fg == 3898 and getinv(1796) >= 100 then
+logs("[`2dsc.gg/ihkaz``] Convert Diamond Locks to Blue Gem Locks, you have more than 100 Diamond Locks.")
+telephone(a.int_x,a.int_y)
+return true
+end
+end
 
 
 
