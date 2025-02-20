@@ -16,7 +16,7 @@ add_smalltext|https://dsc.gg/ihkaz|left|
 add_spacer|small|
 add_label_with_icon|small|What's New? PATCH : [`419/02/2025``]|left|6124|
 add_spacer|small|
-add_smalltext|[+] Commands : [/abso,/wd,/depo]|left|
+add_smalltext|[+] Added Shortcut Convert Diamond Locks to Blue Gem Locks if u punch/wrench Telephone|left|
 add_spacer|small|
 add_smalltext|`2Creator`` : `1@pangerans|left|
 add_spacer|small|
