@@ -14,7 +14,7 @@ set_default_color|`0
 add_label_with_icon|big|iHkaz Community Helper|left|7188|
 add_smalltext|https://dsc.gg/ihkaz|left|
 add_spacer|small|
-add_label_with_icon|small|What's New? PATCH : [`419/02/2025``]|left|6124|
+add_label_with_icon|small|What's New? PATCH : [`420/02/2025``]|left|6124|
 add_spacer|small|
 add_smalltext|[+] Added Shortcut Convert Diamond Locks to Blue Gem Locks if u punch/wrench Telephone|left|
 add_spacer|small|
@@ -80,7 +80,7 @@ end
 
 function banks(m, amount)
     local a = "action|dialog_return\ndialog_name|my_bank_account\nbuttonClicked|"
-    
+
     if m == "depo" then
         return SendPacket(2, a .. "depo_true\n\nbgl_|" .. amount)
     elseif m == "wd" then
