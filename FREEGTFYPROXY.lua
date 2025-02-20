@@ -14,7 +14,7 @@ set_default_color|`0
 add_label_with_icon|big|iHkaz Community Helper|left|7188|
 add_smalltext|https://dsc.gg/ihkaz|left|
 add_spacer|small|
-add_label_with_icon|small|What's New? PATCH : [`420/02/2025``]|left|6124|
+add_label_with_icon|small|What's New? PATCH : [`419/02/2025``]|left|6124|
 add_spacer|small|
 add_smalltext|[+] Added Shortcut Convert Diamond Locks to Blue Gem Locks if u punch/wrench Telephone|left|
 add_spacer|small|
@@ -202,3 +202,4 @@ logs("Report to @pangerans on discord if u found any bugs")
 logs("Request Feature? Join : https://dsc.gg/ihkaz")
 AddCallback("COMMANDLIST", "OnPacket", cmdlist)
 AddCallback("VARIANTLIST", "OnVarlist", variantlist)
+AddCallback("ONPACKETRAW","OnRawPacket",raw)
