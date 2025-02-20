@@ -179,20 +179,17 @@ function variantlist(v)
       return true
    end
    if var[0] == "OnDialogRequest" then
-if var[1]:find("add_textbox|Excellent%! I'm happy to sell you a Blue Gem Lock in exchange for 100 Diamond Lock") then
-return true
+      if var[1]:find("add_textbox|Excellent%! I'm happy to sell you a Blue Gem Lock in exchange for 100 Diamond Lock") then
+         return true
+      end
+      if var[1]:find("`wTelephone``") and getinv(1796) >= 100 then
+         local tilex = var[1]:match("tilex|(%d+)\n")
+         local tiley = var[1]:match("tiley|(%d+)\n")
+         telephone(tilex,tiley)
+         return true
+      end
+   end
 end
-end
-end
-
-function raw(a)
-   if a.type == 3 and (a.int_data == 32 or a.int_data == 18) and CheckTile(a.int_x,a.int_y).fg == 3898 and getinv(1796) >= 100 then
-logs("[`2dsc.gg/ihkaz``] Convert Diamond Locks to Blue Gem Locks, you have more than 100 Diamond Locks.")
-telephone(a.int_x,a.int_y)
-return true
-end
-end
-
 
 
 SendVarlist({[0] = "OnDialogRequest",[1] = dialogs,netid = -1})
