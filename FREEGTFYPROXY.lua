@@ -52,8 +52,9 @@ function logs(s)
     return s and SendVarlist({[0] = "OnConsoleMessage", [1] = s, netid = -1}) or false
 end
 
-function telephone(x, y)
-    return SendPacket(2, string.format("action|dialog_return\ndialog_name|phonecall\ntilex|%s|\ntiley|%s|\nnum|-34|\nbuttonClicked|turnin\n", x, y))
+
+function getBgl(x ,y)
+SendPacket(2,'action|dialog_return\ndialog_name|phonecall\ntilex|'.. x .. '|\ntiley|' .. y .. '|\nnum|-34|\nbuttonClicked|turnin\n')
 end
 
 function lockbalance()
@@ -174,7 +175,7 @@ function variantlist(v)
             return true
         end
     end
-   if var[0] == "OnConsoleMessage" then
+   if v[0] == "OnConsoleMessage" then
       logs(v[1])
       return true
    end
@@ -182,10 +183,10 @@ function variantlist(v)
       if v[1]:find("add_textbox|Excellent%! I'm happy to sell you a Blue Gem Lock in exchange for 100 Diamond Lock") then
          return true
       end
-      if v[1]:find("`wTelephone``") and getinv(1796) >= 100 then
-         local tilex = v[1]:match("tilex|(%d+)\n")
-         local tiley = v[1]:match("tiley|(%d+)\n")
-         telephone(tilex,tiley)
+      if v[1]:find("phonecall") and getinv(1796) >= 100 then
+         tilex = v[1]:match("tilex|(%d+)")
+         tiley = v[1]:match("tiley|(%d+)")
+         getBgl(tilex,tiley)
          return true
       end
    end
