@@ -85,7 +85,7 @@ function banks(m, amount)
 end
 
 function cmdlist(a, b)
-    if b:find("action|input\n|text|/(.+)") then
+    if b:find("action|input\n|text|") then
         command = b:match("action|input\n|text|/(.+)")
         if command then
             if command:match("^wl%s") then
