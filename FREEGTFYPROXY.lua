@@ -14,9 +14,10 @@ set_default_color|`0
 add_label_with_icon|big|iHkaz Community Helper|left|7188|
 add_smalltext|https://dsc.gg/ihkaz|left|
 add_spacer|small|
-add_label_with_icon|small|What's New? PATCH : [`420/02/2025``]|left|6124|
+add_label_with_icon|small|What's New? PATCH : [`421/02/2025``]|left|6124|
 add_spacer|small|
 add_smalltext|[+] Added Shortcut Convert Diamond Locks to Blue Gem Locks if u wrench telephone. `2thanks to [SATANMONARCH]``|left|
+add_smalltext|[+] Added Logspin at player name|left|
 add_spacer|small|
 add_smalltext|`2Creator`` : `1@pangerans|left|
 add_spacer|small|
@@ -88,6 +89,15 @@ function banks(m, amount)
         return SendPacket(2, a .. "wd_true\n\nwd_amount|" .. amount)
     end
    return nil
+end
+
+function getplayers(x)
+  for _,p in pairs(GetPlayers()) do
+    if p.netid == x then
+       return player.name
+    end
+  end
+   return ""
 end
 
 function cmdlist(a, b)
@@ -165,6 +175,8 @@ function variantlist(v)
         if v[2]:find("spun the wheel and got") then
             local num = tonumber(string.match(v[2]:gsub("`.",""), "(%d+)%!"))
             local counts = (num == 19 or num == 28 or num == 0) and "[0]" or "["..string.sub(math.floor(num / 10) + (num % 10), -1).."]"
+            pname = getplayers(v[1]):gsub("%[.-%]","")
+            SendVarlist({[0] = "OnNameChanged",[1] = pname.."[`1"..tostring(num).."``]",netid = v[1]})
             SendVarlist({
                 [0] = "OnTalkBubble",
                 [1] = v[1],
